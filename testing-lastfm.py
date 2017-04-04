@@ -40,6 +40,8 @@ for u in db.locations.find().skip(3):
 '''
 
 for ss in db.songs.find({"time":{"$gt":0}}).limit(3):
-	ti = ss['time'] / 1000.0
-        print ti
-	print datetime.fromtimestamp(ti)
+	timeraw = ss['time'] / 1000.0
+        ti = datetime.fromtimestamp(timeraw)
+        # print ti
+        locresult = db.locations.find({"timestampMS":{"$gte":ti,"$lte":ti}}).sort({"timestampMS":1}).limit(1)
+	print locresult
