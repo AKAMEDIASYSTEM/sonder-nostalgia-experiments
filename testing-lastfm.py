@@ -13,7 +13,7 @@ from pymongo import MongoClient
 client = MongoClient()
 db = client.nostalgia
 
-
+'''
 with open('akamediasystem.ldjson') as lastfm:
 	songsObj = json.load(lastfm)
 
@@ -37,17 +37,8 @@ for u in db.locations.find().skip(3):
         # print np
         idd = u['_id']
         db.locations.update({"_id":idd},{"$set":{"gj":np}, "$unset":{"latitudeE7": "" , "longitudeE7" :""}})
-
-
 '''
-sizeL = len(locations['locations'])
-for i in range(10,-1,-1):
-	index = random.randint(0,sizeL)
-	print locations['locations'][index]
-	# sample output:
-	# {u'latitudeE7': 406805268, u'accuracy': 69, u'longitudeE7': -739619729, u'timestampMs': u'1376857779167'}
-	# but also:
-	# {u'activitys': [{u'activities': [{u'confidence': 100, u'type': u'tilting'}], u'timestampMs': u'1394494209396'}], u'latitudeE7': 407151972, u'accuracy': 91, u'longitudeE7': -739600297, u'timestampMs': u'1394494240827'}
-	print ''
 
-	'''
+for ss in db.songs.find().limit(3):
+	ti = ss['time'/1000.0]
+	print datetime.datetime(ti)
