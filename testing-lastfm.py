@@ -14,6 +14,7 @@ client = MongoClient()
 db = client.nostalgia
 
 '''
+# do raw intake of lastfm and goog data
 with open('akamediasystem.ldjson') as lastfm:
 	songsObj = json.load(lastfm)
 
@@ -28,7 +29,9 @@ with open('LocationHistory.json') as locationHistory:
 result2 = db.locations.insert_many(locations['locations'])
 print result2.inserted_ids
 print "processed google raw intake"
+'''
 
+'''
 # now crunch through each location entry and reformat for geojson. point is stored in key 'gj'
 for u in db.locations.find().skip(3):
         newLat = u['latitudeE7']/10000000
@@ -40,21 +43,21 @@ for u in db.locations.find().skip(3):
 '''
 
 '''
-for ss in db.songs.find({"time":{"$gt":0}}).limit(3):
-        timeraw = ss['time'] / 1000.0
-        ti = datetime.fromtimestamp(timeraw)
-        # print ti
-        locresult = db.locations.find({"timestampMs":{"$gt":ti,"$lt":ti}}).sort([("timestampMs",1)]).limit(1)
-	print 'hey now'
-        print locresult
-        print locresult.count()
-        for ress in locresult:
-                print "hey"
-                print ress
-'''
+# normalize time format in goog dataset
 for u in db.locations.find().skip(3):
         timeraw = int(u['timestampMs']) / 1000.0
         ti = datetime.fromtimestamp(timeraw)
         # print ti
         idd = u['_id']
         db.locations.update({"_id":idd},{"$set":{"time":ti}, "$unset":{"timestampMs": ""}})
+'''
+
+for ss in db.songs.find({"time":{"$gt":0}}).limit(3):
+        locresult = db.locations.find({"time":{"$gt":ss['time'],"$lte":ss['time']}}).sort([("time",1)]).limit(1)
+	print 'hey now'
+        print locresult
+        print locresult.count()
+        for ress in locresult:
+                print "hey"
+                print ress
+print 'done'
