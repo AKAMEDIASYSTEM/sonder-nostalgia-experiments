@@ -40,5 +40,5 @@ for u in db.locations.find().skip(3):
 '''
 
 for ss in db.songs.find().limit(3):
-	ti = ss['time'/1000.0]
+	ti = ss[int('time')/1000.0]
 	print datetime.datetime(ti)
