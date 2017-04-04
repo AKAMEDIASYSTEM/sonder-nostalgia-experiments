@@ -44,7 +44,7 @@ for ss in db.songs.find({"time":{"$gt":0}}).limit(3):
         timeraw = ss['time'] / 1000.0
         ti = datetime.fromtimestamp(timeraw)
         # print ti
-        locresult = db.locations.find({"timestampMS":{"$gt":ti,"$lt":ti}}).sort([("timestampMS",1)]).limit(1)
+        locresult = db.locations.find({"timestampMs":{"$gt":ti,"$lt":ti}}).sort([("timestampMs",1)]).limit(1)
 	print 'hey now'
         print locresult
         print locresult.count()
@@ -53,8 +53,8 @@ for ss in db.songs.find({"time":{"$gt":0}}).limit(3):
                 print ress
 '''
 for u in db.locations.find().limit(3):
-        timeraw = u['timestampMS'] / 1000.0
+        timeraw = u['timestampMs'] / 1000.0
         ti = datetime.fromtimestamp(timeraw)
         print ti
         idd = u['_id']
-        db.locations.update({"_id":idd},{"$set":{"time":np}, "$unset":{"timestampMS": ""}})
+        db.locations.update({"_id":idd},{"$set":{"time":ti}, "$unset":{"timestampMs": ""}})
