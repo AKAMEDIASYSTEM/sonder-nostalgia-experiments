@@ -58,7 +58,7 @@ for ss in db.songs.find({"time":{"$gt":0}}).skip(3).limit(3):
         timecomp = datetime.fromtimestamp(songu)
         print timecomp
         locresult = db.locations.find({"time":{"$gte":timecomp}}).sort([("time",1)]).limit(1)
-        locresult = db.locations.find({"time":{"$lte":timecomp}}).sort([("time",1)]).limit(1)
+        locresult2 = db.locations.find({"time":{"$lte":timecomp}}).sort([("time",1)]).limit(1)
 	# locresult = db.locations.find({"time":{"$gte":timecomp}}).limit(1)
         # locresult2 = db.locations.find({"time":{"$lte":timecomp}}).limit(1)
         for ress in locresult:
