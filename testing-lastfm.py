@@ -60,8 +60,6 @@ for ss in db.songs.find({"time":{"$gt":0}}).limit(3):
         # locresult = db.locations.find({"time":{"$gt":timecomp,"$lte":timecomp}}).sort([("time",1)]).limit(1)
 	locresult = db.locations.find({"time":{"$gte":timecomp}}).limit(1)
         locresult2 = db.locations.find({"time":{"$lte":timecomp}}).limit(1)
-        print 'locresult coming up'
-        print locresult
         for ress in locresult:
                 print "gte result"
                 print ress
