@@ -52,7 +52,7 @@ for u in db.locations.find().skip(3):
         db.locations.update({"_id":idd},{"$set":{"time":ti}, "$unset":{"timestampMs": ""}})
 '''
 
-for ss in db.songs.find({"time":{"$gt":0}}).limit(3):
+for ss in db.songs.find({"time":{"$gt":0}}).skip(3).limit(3):
         songtime = ss['time']
         songu = songtime / 1000.0
         timecomp = datetime.fromtimestamp(songu)
