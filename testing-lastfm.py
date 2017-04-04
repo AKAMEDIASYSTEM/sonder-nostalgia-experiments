@@ -44,4 +44,4 @@ for ss in db.songs.find({"time":{"$gt":0}}).limit(3):
         print ti
         ti = ti / 1000.0
         print ti
-	print datetime.datetime(ti)
+	print datetime.datetime.fromtimestamp(ti)
