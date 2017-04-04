@@ -44,7 +44,9 @@ for ss in db.songs.find({"time":{"$gt":0}}).limit(3):
         ti = datetime.fromtimestamp(timeraw)
         # print ti
         locresult = db.locations.find({"timestampMS":{"$gte":ti,"$lte":ti}}).sort([("timestampMS",1)]).limit(1)
-	print locresult
+	print 'hey now'
+        print locresult
+        print locresult.count()
         for ress in locresult:
                 print "hey"
                 print ress
