@@ -52,9 +52,9 @@ for ss in db.songs.find({"time":{"$gt":0}}).limit(3):
                 print "hey"
                 print ress
 '''
-for u in db.locations.find().limit(3):
+for u in db.locations.find().skip(3):
         timeraw = int(u['timestampMs']) / 1000.0
         ti = datetime.fromtimestamp(timeraw)
-        print ti
+        # print ti
         idd = u['_id']
         db.locations.update({"_id":idd},{"$set":{"time":ti}, "$unset":{"timestampMs": ""}})
