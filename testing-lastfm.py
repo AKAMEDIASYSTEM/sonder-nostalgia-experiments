@@ -53,7 +53,7 @@ for ss in db.songs.find({"time":{"$gt":0}}).limit(3):
                 print ress
 '''
 for u in db.locations.find().limit(3):
-        timeraw = u['time'] / 1000.0
+        timeraw = u['timestampMS'] / 1000.0
         ti = datetime.fromtimestamp(timeraw)
         print ti
         idd = u['_id']
