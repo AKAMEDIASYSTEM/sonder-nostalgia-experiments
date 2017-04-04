@@ -9,7 +9,8 @@ Nostalgia literally translates to "a painful desire to return home"
 ## Useful resources:
 [This](https://github.com/maxkueng/lastfmexport) script easily got me what I think is my whole last.fm history(!). Make those accounts private, kids!  
 
-So the rest of this readme is just going to be my dumb notes and pseudocode you will probably not like.  
+### So, the rest of this readme
+...is just going to be my dumb notes and pseudocode you will probably not like.  
 
 fewer last.fm than there are google loc history plays
 most last.fm are from times when i'm at a desktop/at work/at home
