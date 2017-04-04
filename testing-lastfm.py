@@ -55,8 +55,9 @@ for u in db.locations.find().skip(3):
 for ss in db.songs.find({"time":{"$gt":0}}).limit(3):
         songtime = ss['time']
         print songtime
-        locresult = db.locations.find({"time":{"$gt":ss['time'],"$lte":ss['time']}}).sort([("time",1)]).limit(1)
-	print 'locresult coming up'
+        # locresult = db.locations.find({"time":{"$gt":ss['time'],"$lte":ss['time']}}).sort([("time",1)]).limit(1)
+	locresult = db.locations.find({"time":{"$gt":ss['time'],"$lte":ss['time']}}).explain()
+        print 'locresult coming up'
         print locresult
         print locresult.count()
         for ress in locresult:
