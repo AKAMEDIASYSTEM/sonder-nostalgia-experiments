@@ -1,3 +1,16 @@
+NOSTALGIA (experimental repo for Syncwalk)  
+
+This is eventually going to work with my [Syncwalk](https://syncwalk.city) geospatial music platform.  
+
+The idea is to take my [last.fm](http://last.fm) listening history and my (horrifyingly voluminous) [Google Location History](https://takeout.google.com/settings/takeout) location history. This way, I can take a Syncwalk in Teele Square and hear all the tunes I was listening to back when I lived there, in another time, back in a golden age.  
+
+Nostalgia literally translates to "a painful desire to return home"  
+
+Useful resources:
+[This](https://github.com/maxkueng/lastfmexport) script easily got me what I think is my whole last.fm history(!). Make those accounts private, kids!
+
+So the rest of this readme is just going to be my dumb notes and pseudocode you will probably not like.
+
 fewer last.fm than there are google loc history plays
 most last.fm are from times when i'm at a desktop/at work/at home
 so, chunk by days in order to spread out the day's songs over the day's travels
