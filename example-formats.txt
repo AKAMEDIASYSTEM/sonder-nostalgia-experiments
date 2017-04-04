@@ -1,0 +1,46 @@
+// example google datum, after
+/* 
+{
+  "locations" : [ {the following object}, {another object like that one}
+*/
+
+{
+    "timestampMs" : "1490730726809",
+    "latitudeE7" : 407081873,
+    "longitudeE7" : -739650500,
+    "accuracy" : 20,
+    "activitys" : [ {
+      "timestampMs" : "1490730724535",
+      "activities" : [ {
+        "type" : "still",
+        "confidence" : 75
+      }, {
+        "type" : "onFoot",
+        "confidence" : 10
+      }, {
+        "type" : "inVehicle",
+        "confidence" : 5
+      }, {
+        "type" : "onBicycle",
+        "confidence" : 5
+      }, {
+        "type" : "unknown",
+        "confidence" : 5
+      }, {
+        "type" : "walking",
+        "confidence" : 5
+      }, {
+        "type" : "running",
+        "confidence" : 5
+      } ]
+    } ]
+  }
+
+// example lastfm datum
+  {"time":1212366016000,
+    "artist":"Boxcutter",
+    "title":"Foxy",
+    "album":"Glyphic",
+    "trackMBID":"40d29c43-8ebe-4f94-a570-a8877593c268",
+    "artistMBID":"a3bc465f-25f4-4eed-a8e6-42255a25fd12",
+    "albumMBID":"a26e7e83-4b2f-458e-90d8-610f09c09dbf"}
