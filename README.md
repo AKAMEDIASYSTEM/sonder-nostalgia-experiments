@@ -25,19 +25,19 @@ a syncwalk representing the month's songs-and-travels
 mongoDB structure:
 
 collection SONGS:
-	* timestamp
-	* title
-	* artist
-	* album
-	* trackMBID (this means, I think, "MusicBrainz ID"?)
-	* artistMBID
-	* albumMBID
+* timestamp
+* title
+* artist
+* album
+* trackMBID (this means, I think, "MusicBrainz ID"?)
+* artistMBID
+* albumMBID
 
 collection LOCATION:
-	* timestamp
-	* latitude
-	* longitude
-	* accuracy
+* timestamp
+* latitude
+* longitude
+* accuracy
 
 
 for each song in last.fm dataset:
