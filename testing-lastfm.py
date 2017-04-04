@@ -57,8 +57,8 @@ for ss in db.songs.find({"time":{"$gt":0}}).limit(3):
         songu = songtime / 1000.0
         timecomp = datetime.fromtimestamp(songu)
         print timecomp
-        locresult = db.locations.find({"time":{"$gt":timecomp,"$lte":timecomp}}).sort([("time",1)]).limit(1)
-	# locresult = db.locations.find({"time":{"$gt":timecomp,"$lte":timecomp}}).limit(4)
+        # locresult = db.locations.find({"time":{"$gt":timecomp,"$lte":timecomp}}).sort([("time",1)]).limit(1)
+	locresult = db.locations.find({"time":{"$gt":timecomp,"$lte":timecomp}}).limit(4)
         print 'locresult coming up'
         print locresult
         print locresult.count()
