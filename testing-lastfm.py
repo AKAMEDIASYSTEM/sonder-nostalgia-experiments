@@ -52,10 +52,10 @@ for u in db.locations.find().skip(3):
         db.locations.update({"_id":idd},{"$set":{"time":ti}, "$unset":{"timestampMs": ""}})
 '''
 
-for u in db.songs.find({"time":{"$gt":0}}).skip(3):
+for u in db.songs.find({"time":{"$ne":0}}):
         timeraw = int(u['time'] / 1000.0)
         ti = datetime.fromtimestamp(timeraw)
-        # print ti
+        print ti
         idd = u['_id']
         db.songs.update({"_id":idd},{"$set":{"timestamp":ti}})
 print 'done with timestamp update'
