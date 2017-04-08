@@ -19,6 +19,7 @@ with open('akamediasystem.ldjson') as lastfm:
 	songsObj = json.load(lastfm)
 for song in songsObj:
         if song['time'] == 0:
+                print 'encountered timeless song'
                 song['timestamp'] = datetime.fromtimestamp(1180639052)
         else:
                 timeraw = int(song['time']) / 1000.0
