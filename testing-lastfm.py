@@ -23,7 +23,8 @@ for song in songsObj:
         else:
                 timeraw = int(song['time']) / 1000.0
                 song['timestamp'] = datetime.fromtimestamp(timeraw)
-        print song['timestamp']
+        # print song['timestamp']
+print songsObj
 '''     
 print "processed lastfm, google next"
 print len(songsObj)
