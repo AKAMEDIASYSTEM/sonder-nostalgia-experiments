@@ -53,6 +53,7 @@ for u in db.locations.find().skip(3):
 '''
 
 for u in db.songs.find({"time":{"$ne":0}}):
+        print u['time']
         timeraw = int(u['time'] / 1000.0)
         ti = datetime.fromtimestamp(timeraw)
         print ti
