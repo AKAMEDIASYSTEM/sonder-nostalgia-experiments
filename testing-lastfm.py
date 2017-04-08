@@ -13,11 +13,18 @@ from pymongo import MongoClient
 client = MongoClient()
 db = client.nostalgia
 
-'''
+
 # do raw intake of lastfm and goog data
 with open('akamediasystem.ldjson') as lastfm:
 	songsObj = json.load(lastfm)
-
+for song in songsObj:
+        if song['time'] == 0:
+                song['timestamp'] = datetime.fromtimestamp(1180639052000)
+        else:
+                timeraw = int(song['time']) / 1000.0
+                song['timestamp'] = datetime.fromtimestamp(timeraw)
+        print song['timestamp']
+'''     
 print "processed lastfm, google next"
 print len(songsObj)
 result = db.songs.insert_many(songsObj)
@@ -60,14 +67,15 @@ for u in db.locations.find().skip(3):
 #         idd = u['_id']
 #         db.songs.update({"_id":idd},{"$set":{"timestamp":ti}})
 
-for u in db.songs.find({"time":{"$type":"long"}}):
-        print u['time']
-        timeraw = int(u['time'] / 1000.0)
-        ti = datetime.fromtimestamp(timeraw)
-        print ti
-        idd = u['_id']
-        db.songs.update({"_id":idd},{"$set":{"timestamp":ti}})
-print 'done with timestamp update'
+# for u in db.songs.find({"time":{"$type":"long"}}):
+#         print u['time']
+#         timeraw = int(u['time'] / 1000.0)
+#         ti = datetime.fromtimestamp(timeraw)
+#         print ti
+#         idd = u['_id']
+#         db.songs.update({"_id":idd},{"$set":{"timestamp":ti}})
+# print 'done with timestamp update'
+
 # print db.songs.findOne({"time":{"$gt":0}}) # this fails as "colleciton obj is not callable" but no matter, update worked
 
 '''
