@@ -24,13 +24,13 @@ for song in songsObj:
                 timeraw = int(song['time']) / 1000.0
                 song['timestamp'] = datetime.fromtimestamp(timeraw)
         # print song['timestamp']
-print songsObj
-'''     
-print "processed lastfm, google next"
+# print songsObj
+
+# print "processed lastfm, google next"
 print len(songsObj)
 result = db.songs.insert_many(songsObj)
 print result.inserted_ids
-
+'''
 with open('LocationHistory.json') as locationHistory:
 	locations = json.load(locationHistory)
 
