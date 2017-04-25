@@ -1,46 +1,62 @@
-// example google datum, after
+// example google datum, after mongo clean
 /* 
 {
-  "locations" : [ {the following object}, {another object like that one}
-*/
-
-{
-    "timestampMs" : "1490730726809",
-    "latitudeE7" : 407081873,
-    "longitudeE7" : -739650500,
-    "accuracy" : 20,
-    "activitys" : [ {
-      "timestampMs" : "1490730724535",
-      "activities" : [ {
-        "type" : "still",
-        "confidence" : 75
-      }, {
-        "type" : "onFoot",
-        "confidence" : 10
-      }, {
-        "type" : "inVehicle",
-        "confidence" : 5
-      }, {
-        "type" : "onBicycle",
-        "confidence" : 5
-      }, {
-        "type" : "unknown",
-        "confidence" : 5
-      }, {
-        "type" : "walking",
-        "confidence" : 5
-      }, {
-        "type" : "running",
-        "confidence" : 5
-      } ]
-    } ]
-  }
+  "_id" : ObjectId("58e2cd6c815a524032e09521"),
+  "activitys" : [
+    {
+      "activities" : [
+        {
+          "confidence" : 75,
+          "type" : "still"
+        },
+        {
+          "confidence" : 10,
+          "type" : "onFoot"
+        },
+        {
+          "confidence" : 5,
+          "type" : "inVehicle"
+        },
+        {
+          "confidence" : 5,
+          "type" : "onBicycle"
+        },
+        {
+          "confidence" : 5,
+          "type" : "unknown"
+        },
+        {
+          "confidence" : 5,
+          "type" : "walking"
+        },
+        {
+          "confidence" : 5,
+          "type" : "running"
+        }
+      ],
+      "timestampMs" : "1490730724535"
+    }
+  ],
+  "accuracy" : 20,
+  "gj" : {
+    "type" : "Point",
+    "coordinates" : [
+      -73.96505,
+      40.7081873
+    ]
+  },
+  "time" : ISODate("2017-03-28T15:52:06.809Z")
+}
 
 // example lastfm datum
-  {"time":1212366016000,
-    "artist":"Boxcutter",
-    "title":"Foxy",
-    "album":"Glyphic",
-    "trackMBID":"40d29c43-8ebe-4f94-a570-a8877593c268",
-    "artistMBID":"a3bc465f-25f4-4eed-a8e6-42255a25fd12",
-    "albumMBID":"a26e7e83-4b2f-458e-90d8-610f09c09dbf"}
+{
+  "_id" : ObjectId("58e94d05815a52189f63671d"),
+  "album" : "Quality",
+  "albumMBID" : "07041b80-aa46-4f9f-bd7e-d4400d627180",
+  "title" : "04 - Shock Body - Talib Kweli",
+  "timestamp" : ISODate("2007-05-31T15:17:32Z"),
+  "artist" : "Talib Kweli",
+  "time" : 0,
+  "trackMBID" : "",
+  "artistMBID" : "bb3cbea2-5ad4-4917-bc84-8a1975d40315"
+}
