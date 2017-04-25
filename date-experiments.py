@@ -22,7 +22,7 @@ for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}})
         for result in r:
                 print 'hey now, match at %s' % u['timestamp']
                 print result
-                print timedelta(u['timestamp']-result['time'])
+                print u['timestamp']-result['time']
 # 
 
 # # do raw intake of lastfm and goog data
