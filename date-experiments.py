@@ -18,7 +18,7 @@ for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}})
         date1 = u['timestamp'] - timedelta(days=0.5)
         date2 = u['timestamp'] + timedelta(days=0.5)
         r = db.locations.find({"time":{"$gte":date1, "$lte":date2}}).count()
-        print '%i matches'% r
+        print '%i matches at %s'% r, u['timestamp']
         # for result in r:
         #         print 'hey now, match at %s' % u['timestamp']
         #         print result
