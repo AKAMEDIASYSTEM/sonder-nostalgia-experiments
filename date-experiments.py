@@ -16,9 +16,8 @@ db = client.nostalgia
 
 for u in db.songs.find().limit(30):
         print u['timestamp']
-        normdate = datetime.fromtimestamp(u['timestamp'])
-        date1 = normdate - timedelta(days=0.5)
-        date2 = normdate + timedelta(days=0.5)
+        date1 = u['timestamp'] - timedelta(days=0.5)
+        date2 = u['timestamp'] + timedelta(days=0.5)
         r = db.locations.find({"time":{"$gte":date1, "$lte":date2}})
         for result in r:
                 print result
