@@ -14,7 +14,7 @@ from pymongo import MongoClient
 client = MongoClient()
 db = client.nostalgia
 
-for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}}).limit(4):
+for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}}).limit(40):
         date1 = u['timestamp'] - timedelta(days=0.5)
         date2 = u['timestamp'] + timedelta(days=0.5)
         r = db.locations.find({"time":{"$gte":date1, "$lte":date2}})
