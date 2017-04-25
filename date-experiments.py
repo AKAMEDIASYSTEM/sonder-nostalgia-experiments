@@ -6,6 +6,7 @@ import random
 import math
 import sys
 from datetime import datetime
+from datetime import timedelta
 from geojson import Point
 import pymongo
 from pymongo import MongoClient
@@ -14,8 +15,8 @@ client = MongoClient()
 db = client.nostalgia
 
 for u in db.songs.find().limit(3):
-        date1 = u['timestamp'] - datetime.timedelta(days=0.5)
-        date2 = u['timestamp'] + datetime.timedelta(days=0.5)
+        date1 = u['timestamp'] - timedelta(days=0.5)
+        date2 = u['timestamp'] + timedelta(days=0.5)
         r = db.locations.find({"time":{"$gte":date1, "$lte":date2}})
         for result in r:
                 print result
