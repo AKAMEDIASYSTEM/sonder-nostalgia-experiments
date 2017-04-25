@@ -15,9 +15,19 @@ client = MongoClient()
 db = client.nostalgia
 
 for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}}).skip(10000).limit(100):
-        date1 = u['timestamp'] - timedelta(days=0.5)
-        date2 = u['timestamp'] + timedelta(days=0.5)
+        date1 = u['timestamp'] - timedelta(days=0.25)
+        date2 = u['timestamp'] + timedelta(days=0.25)
         r = db.locations.find({"time":{"$gte":date1, "$lte":date2}}).sort("time",pymongo.DESCENDING).limit(1)
+        # print '%i matches at %s'% (r, u['timestamp'])
+        for result in r:
+                print 'hey now, match at %s' % u['timestamp']
+                print result
+                print u['timestamp']-result['time']
+
+for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}}).skip(10000).limit(100):
+        date1 = u['timestamp'] - timedelta(days=0.25)
+        date2 = u['timestamp'] + timedelta(days=0.25)
+        r = db.locations.find({"time":{"$gte":date1, "$lte":date2}}).sort("time",pymongo.ASCENDING).limit(1)
         # print '%i matches at %s'% (r, u['timestamp'])
         for result in r:
                 print 'hey now, match at %s' % u['timestamp']
