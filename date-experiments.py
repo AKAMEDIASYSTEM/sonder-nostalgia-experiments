@@ -14,6 +14,7 @@ from pymongo import MongoClient
 client = MongoClient()
 db = client.nostalgia
 
+'''
 for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}}).skip(10000).limit(100):
         date1 = u['timestamp'] - timedelta(days=0.25)
         date2 = u['timestamp'] + timedelta(days=0.25)
@@ -33,7 +34,18 @@ for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}})
                 print 'hey now, match at %s' % u['timestamp']
                 print result
                 print u['timestamp']-result['time']
+'''
+
+# for s in songs:
+#    upsert (creating syncwalk AND songs[] array if necessary) song into new syncwalk, with name: "%B %Y"                
 # 
+for s in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}}).limit(10):
+        syncwalkName = s['timestamp'].strftime('%B %Y')
+        upsertResult = db.syncwalks.update(
+                {"name":syncwalkName},
+                {"$push":{"songs":s}},
+                {"upsert":True})
+        print upsertResult
 
 # # do raw intake of lastfm and goog data
 # with open('akamediasystem.ldjson') as lastfm:
@@ -118,4 +130,16 @@ for ss in db.songs.find({"time":{"$gt":0}}).skip(3).limit(3):
                 print "lte result"
                 print resss
 print 'done'
+'''
+
+'''
+how to get "february" out of a datetime:
+g = datetime.datetime.now() # or w/e datetime
+calendar.month_name[g.month]
+--OR--
+g.strftime('%B')
+>>> g.strftime('%B %Y')
+'April 2017'
+
+
 '''
