@@ -44,7 +44,7 @@ for s in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}})
         upsertResult = db.syncwalks.update(
                 {"name":syncwalkName},
                 {"$push":{"songs":s}},
-                {"upsert":true})
+                True)
         print upsertResult
 
 # # do raw intake of lastfm and goog data
