@@ -49,6 +49,10 @@ for s in db.songs.find():
 
 print upsertResult
 print syncwalkName
+### NOTE, the above works pretty good, but we should FIRST try 
+### to do a soptify-mbid reconciliation so the syncwalks have playable tracks
+### ALSO this is premature, because each song in db.songs needs a temporally-nearest 
+### location appended to it...
 
 # # do raw intake of lastfm and goog data
 # with open('akamediasystem.ldjson') as lastfm:
