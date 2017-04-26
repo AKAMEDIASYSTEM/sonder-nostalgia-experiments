@@ -36,6 +36,7 @@ for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}})
                 print u['timestamp']-result['time']
 '''
 
+'''
 # for s in songs:
 #    upsert (creating syncwalk AND songs[] array if necessary) song into new syncwalk, with name: "%B %Y"                
 # 
@@ -49,11 +50,19 @@ for s in db.songs.find():
 
 print upsertResult
 print syncwalkName
+'''
 ### NOTE, the above works pretty good, but we should FIRST try 
 ### to do a soptify-mbid reconciliation so the syncwalks have playable tracks
 ### ALSO this is premature, because each song in db.songs needs a temporally-nearest 
 ### location appended to it...
 
+
+
+
+### HERE's where wel'll move all unique-MBID songs 
+
+
+'''
 # # do raw intake of lastfm and goog data
 # with open('akamediasystem.ldjson') as lastfm:
 # 	songsObj = json.load(lastfm)
@@ -71,7 +80,7 @@ print syncwalkName
 # print len(songsObj)
 # result = db.songs.insert_many(songsObj)
 # print result.inserted_ids
-'''
+
 with open('LocationHistory.json') as locationHistory:
 	locations = json.load(locationHistory)
 
