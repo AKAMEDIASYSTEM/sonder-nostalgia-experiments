@@ -20,12 +20,11 @@ for each unique song in db/songs, search spotify API for trackname + artist
 if no artist name or no track name, ignore (and possibly remove entirely from db.songs?)
 '''
 
-for t in akacreds.creds:
-	os.environ[t] = akacreds.creds[t]
-	print t, akacreds.creds[t]
+# for t in akacreds.creds:
+# 	os.environ[t] = akacreds.creds[t]
+# 	print t, akacreds.creds[t]
 
 
-'''
 
 client_credentials_manager = SpotifyClientCredentials()
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
@@ -38,5 +37,3 @@ while playlists:
         playlists = sp.next(playlists)
     else:
         playlists = None
-
-'''
