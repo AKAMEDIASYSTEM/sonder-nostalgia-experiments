@@ -39,13 +39,16 @@ for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}})
 # for s in songs:
 #    upsert (creating syncwalk AND songs[] array if necessary) song into new syncwalk, with name: "%B %Y"                
 # 
-for s in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}}).limit(10):
+# for s in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}}).limit(10):
+for s in db.songs.find():
         syncwalkName = s['timestamp'].strftime('%B %Y')
         upsertResult = db.syncwalks.update(
                 {"name":syncwalkName},
                 {"$push":{"songs":s}},
                 True)
-        print upsertResult
+
+print upsertResult
+print syncwalkName
 
 # # do raw intake of lastfm and goog data
 # with open('akamediasystem.ldjson') as lastfm:
