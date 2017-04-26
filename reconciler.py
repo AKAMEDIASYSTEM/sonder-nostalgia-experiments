@@ -20,9 +20,9 @@ for each unique song in db/songs, search spotify API for trackname + artist
 if no artist name or no track name, ignore (and possibly remove entirely from db.songs?)
 '''
 
-# for t in akacreds.creds:
-# 	os.environ[t] = akacreds.creds[t]
-# 	print t, akacreds.creds[t]
+for t in akacreds.creds:
+	os.environ[t] = akacreds.creds[t]
+	print t, akacreds.creds[t]
 
 
 
