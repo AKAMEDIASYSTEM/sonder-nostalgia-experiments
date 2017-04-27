@@ -1,3 +1,5 @@
 akamediasystem.ldjson
 LocationHistory.json
+akacreds.py
+*.pyc
 .DS_Store
