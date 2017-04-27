@@ -14,7 +14,7 @@ from pymongo import MongoClient
 client = MongoClient()
 db = client.nostalgia
 
-'''
+
 for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}}).skip(10000).limit(100):
         date1 = u['timestamp'] - timedelta(days=0.25)
         date2 = u['timestamp'] + timedelta(days=0.25)
@@ -34,7 +34,7 @@ for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}})
                 print 'hey now, match at %s' % u['timestamp']
                 print result
                 print u['timestamp']-result['time']
-'''
+
 
 '''
 # for s in songs:
