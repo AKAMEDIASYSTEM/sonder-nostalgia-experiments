@@ -25,4 +25,4 @@ for i in r:
 	for s in i['songs']:
 		out.append(s['gj'])
 
-print geojson.dump(out)
+print geojson.dumps(out)
