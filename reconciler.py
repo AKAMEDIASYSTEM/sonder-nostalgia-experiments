@@ -34,7 +34,8 @@ while playlists:
     for i, playlist in enumerate(playlists['items']):
     	namerrr = playlist['name']
     	print type(namerrr)
-    	# namerrr = namerrr.encode('utf-8')
+    	namerrr = namerrr.encode('utf-8')
+    	print namerrr
         print("%4d %s %s" % (i + 1 + playlists['offset'], playlist['uri'],  namerrr))
     if playlists['next']:
         playlists = sp.next(playlists)
