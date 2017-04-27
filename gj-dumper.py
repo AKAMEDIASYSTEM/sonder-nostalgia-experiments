@@ -22,4 +22,5 @@ db = client.nostalgia
 
 r = db.syncwalks.find({}).limit(1)
 for i in r:
+	print i
 	print i['gj']
