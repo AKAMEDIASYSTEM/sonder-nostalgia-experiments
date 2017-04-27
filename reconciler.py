@@ -32,11 +32,11 @@ sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 playlists = sp.user_playlists('spotify')
 while playlists:
     for i, playlist in enumerate(playlists['items']):
-    	namerrr = playlist['name']
+    	namerrr = unicode(playlist['name'], 'utf-8')
     	print type(namerrr)
-    	namerrr = namerrr.encode('utf-8')
+    	namerrr = unicode(namerrr.encode('utf-8'), 'utf-8')
     	print namerrr
-    	uriii = playlist['uri']
+    	uriii = unicode(playlist['uri'], 'utf-8')
     	print uriii
         print("%4d %s %s" % (i + 1 + playlists['offset'], uriii,  namerrr))
     if playlists['next']:
