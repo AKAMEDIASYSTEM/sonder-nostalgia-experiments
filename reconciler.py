@@ -30,8 +30,8 @@ for each unique song in db/songs, search spotify API for trackname + artist
 if no artist name or no track name, ignore (and possibly remove entirely from db.songs?)
 '''
 
-songCursor = db.songs.find().limit(4)
+songCursor = db.songs.find('gj':{'$exists':True}).limit(4)
 for sng in songCursor:
 	tt = sng['timestamp']
 	print tt
-	nl = db.locations.find()
+	# nl = db.locations.find()
