@@ -34,7 +34,7 @@ while playlists:
     for i, playlist in enumerate(playlists['items']):
     	namerrr = playlist['name'].encode("utf-8")
     	print type(namerrr)
-    	namerrr = namerrr.encode('utf-8').encode("utf-8")
+    	namerrr = namerrr.encode("utf-8")
     	print namerrr
     	uriii = playlist['uri'].encode("utf-8")
     	print uriii
