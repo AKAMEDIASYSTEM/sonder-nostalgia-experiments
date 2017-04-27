@@ -21,4 +21,5 @@ client = MongoClient()
 db = client.nostalgia
 
 r = db.syncwalks.find({}).limit(1)
-print r['gj']
+for i in r:
+	print i['gj']
