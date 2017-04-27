@@ -32,8 +32,10 @@ if no artist name or no track name, ignore (and possibly remove entirely from db
 
 songCursor = db.songs.find({'gj':{'$exists':True}}).limit(4)
 for sng in songCursor:
-	tt = sng['timestamp']
-	print tt
-	lo = sng['gj']
-	print lo
-	# nl = db.locations.find()
+	tt = sng['timestamp'].strftime('%B %Y')
+	upsertResult = db.syncwalks.update(
+		{'name':tt},
+		{'$push':{'songs':sng}},
+		True)
+print upsertResult
+print tt
