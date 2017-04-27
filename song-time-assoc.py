@@ -16,24 +16,17 @@ db = client.nostalgia
 
 
 for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}}).skip(10000).limit(100):
-        date1 = u['timestamp'] - timedelta(days=0.25)
-        date2 = u['timestamp'] + timedelta(days=0.25)
-        r = db.locations.find({"time":{"$gte":date1, "$lte":date2}}).sort("time",pymongo.DESCENDING).limit(1)
-        # print '%i matches at %s'% (r, u['timestamp'])
-        for result in r:
-                print 'hey now, match at %s' % u['timestamp']
-                print result
-                print u['timestamp']-result['time']
-
-for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}}).skip(10000).limit(100):
-        date1 = u['timestamp'] - timedelta(days=0.25)
-        date2 = u['timestamp'] + timedelta(days=0.25)
+        date1 = u['timestamp'] - timedelta(days=0.2)
+        date2 = u['timestamp'] + timedelta(days=0.2)
+        # NOTE, "ascending" is the sort-order we want if we want the closest entry first
         r = db.locations.find({"time":{"$gte":date1, "$lte":date2}}).sort("time",pymongo.ASCENDING).limit(1)
         # print '%i matches at %s'% (r, u['timestamp'])
-        for result in r:
-                print 'hey now, match at %s' % u['timestamp']
-                print result
-                print u['timestamp']-result['time']
+        if r.count() is not 0:
+                print r[0]
+                # update the song with the loc
+                # print 'hey now, match at %s' % u['timestamp']
+                # print result
+                # print u['timestamp']-result['time']
 
 
 '''

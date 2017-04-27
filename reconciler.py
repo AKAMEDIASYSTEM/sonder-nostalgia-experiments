@@ -15,31 +15,23 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import akacreds
 import os
 
+# credential copt to local env vars
+for t in akacreds.creds:
+	os.environ[t] = akacreds.creds[t]
+	print t, akacreds.creds[t]
+
+client = MongoClient()
+db = client.nostalgia
+client_credentials_manager = SpotifyClientCredentials()
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+
 '''
 for each unique song in db/songs, search spotify API for trackname + artist
 if no artist name or no track name, ignore (and possibly remove entirely from db.songs?)
 '''
 
-for t in akacreds.creds:
-	os.environ[t] = akacreds.creds[t]
-	print t, akacreds.creds[t]
-
-
-
-client_credentials_manager = SpotifyClientCredentials()
-sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-
-playlists = sp.user_playlists('spotify')
-while playlists:
-    for i, playlist in enumerate(playlists['items']):
-    	namerrr = playlist['name'].encode("utf-8")
-    	print type(namerrr)
-    	namerrr = namerrr.encode("utf-8")
-    	print namerrr
-    	uriii = playlist['uri'].encode("utf-8")
-    	print uriii
-        print("%4d %s %s" % (i + 1 + playlists['offset'], uriii,  namerrr))
-    if playlists['next']:
-        playlists = sp.next(playlists)
-    else:
-        playlists = None
+songCursor = db.songs.find().limit(4)
+for sng in songCursor:
+	tt = sng['timestamp']
+	print tt
+	nl = db.locations.find()
