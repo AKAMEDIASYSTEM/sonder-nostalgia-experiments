@@ -23,6 +23,8 @@ for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}})
         # print '%i matches at %s'% (r, u['timestamp'])
         if r.count() is not 0:
                 print r[0]['gj']
+                qq = db.songs.update({'_id':u['_id']},{'$set':{'gj':r[0]['gj']}},{'upsert':False})
+                print qq
                 # update the song with the loc
                 # print 'hey now, match at %s' % u['timestamp']
                 # print result
