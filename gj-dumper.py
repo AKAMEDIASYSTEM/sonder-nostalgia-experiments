@@ -22,5 +22,5 @@ db = client.nostalgia
 
 r = db.syncwalks.find({}).limit(1)
 for i in r:
-	print i
-	print i['gj']
+	for s in i['songs']:
+		print s['gj']
