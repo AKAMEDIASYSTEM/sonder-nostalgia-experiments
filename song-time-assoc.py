@@ -22,7 +22,7 @@ for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}})
         r = db.locations.find({"time":{"$gte":date1, "$lte":date2}}).sort("time",pymongo.ASCENDING).limit(1)
         # print '%i matches at %s'% (r, u['timestamp'])
         if r.count() is not 0:
-                print r[0]
+                print r[0]['gj']
                 # update the song with the loc
                 # print 'hey now, match at %s' % u['timestamp']
                 # print result
