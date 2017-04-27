@@ -34,4 +34,6 @@ songCursor = db.songs.find({'gj':{'$exists':True}}).limit(4)
 for sng in songCursor:
 	tt = sng['timestamp']
 	print tt
+	lo = sng['gj']
+	print lo
 	# nl = db.locations.find()
