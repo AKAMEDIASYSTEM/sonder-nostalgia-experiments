@@ -15,7 +15,8 @@ client = MongoClient()
 db = client.nostalgia
 
 
-for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}}):
+# for u in db.songs.find({"timestamp":{"$gt":datetime.fromtimestamp(1180639052)}}):
+for u in db.songs.find():
         date1 = u['timestamp'] - timedelta(days=0.2)
         date2 = u['timestamp'] + timedelta(days=0.2)
         # NOTE, "ascending" is the sort-order we want if we want the closest entry first
