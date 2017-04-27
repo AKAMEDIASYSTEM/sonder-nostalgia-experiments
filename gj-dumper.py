@@ -19,8 +19,10 @@ import os
 
 client = MongoClient()
 db = client.nostalgia
-
+out = []
 r = db.syncwalks.find({}).limit(1)
 for i in r:
 	for s in i['songs']:
-		print s['gj']
+		out.append(s['gj'])
+
+print out
