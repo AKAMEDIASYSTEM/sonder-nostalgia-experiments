@@ -33,9 +33,9 @@ playlists = sp.user_playlists('spotify')
 while playlists:
     for i, playlist in enumerate(playlists['items']):
     	namerrr = playlist['name']
-    	print namerrr
-    	namerrr = namerrr.encode('utf-8')
-        print("%4d %s %s" % (i + 1 + playlists['offset'], playlist['uri'],  playlist['name']))
+    	print typeof(namerrr)
+    	# namerrr = namerrr.encode('utf-8')
+        print("%4d %s %s" % (i + 1 + playlists['offset'], playlist['uri'],  namerrr))
     if playlists['next']:
         playlists = sp.next(playlists)
     else:
